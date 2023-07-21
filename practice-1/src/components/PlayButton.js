@@ -1,14 +1,15 @@
 import './PlayButton.css';
+import { useState } from 'react';
 function PlayButton({message, children, onPlay, onPause}) {
-    let playing = false;
+    const [playing, setPlaying] = useState(false);
     function handleClick() {
         
         if(playing) onPlay();
         else onPause();
-        playing = !playing;
+        setPlaying(!playing);
     }
     return(
-        <button onClick={handleClick} >{children}</button>
+        <button onClick={handleClick} >{children} : {playing? '▶️': '⏸️'}</button>
 
     )
 }

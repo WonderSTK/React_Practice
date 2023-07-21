@@ -1,11 +1,14 @@
 import "./App.css";
+import AddVideo from "./components/AddVideo";
 import PlayButton from "./components/PlayButton";
 import Video from "./components/Video";
-import videos from "./data/data";
+import videoDB from "./data/data";
+import { useState } from "react";
 function App() {
+  const [videos, setVideos] = useState(videoDB);
   return (
     <div className="App">
-      <div>Videos</div>
+      <AddVideo
       {videos.map((video) => (
         <Video
           key={video.id}
@@ -25,9 +28,7 @@ function App() {
           </PlayButton>
         </Video>
       ))}
-      <div style={{ clear: "both" }}>
-        {/* <PlayButton  message="pause-msg" onSmash={()=>alert('playyy')}>Pause</PlayButton> */}
-      </div>
+      
     </div>
   );
 }
