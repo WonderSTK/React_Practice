@@ -1,17 +1,48 @@
-function AddVideo() {
+import { useState } from "react";
+import "./AddVideo.css"
+
+const intialState = {
+        time: '2 year ago',
+        channel: 'Mehul Kumar',
+        verified: true,
+        title: '',
+        views: '',
+}
+
+function AddVideo({addVideos}) {
+    const [video, setVideos] = useState(intialState);
+
+    function handleSubmit(e){
+        e.preventDefault();
+        addVideos(video);
+        setVideos(intialState);
+        
+
+    }
+    function handleChange(e){
+        setVideos({...video,
+            [e.target.name] : e.target.value
+        });
+    }
 
     return(
         <form>
-            <input type="text" />
-            <input type="text"/>
-            <button onClick={()=> {
-        //   setVideos([...videos,{id:videos.length+1,
-        //     title: 'Mongo DB tutorial',
-        //     views: '999K',
-        //     time: '2 year ago',
-        //     channel: 'Mehul Kumar',
-        //     verified: true ,}])
-        }}>Add Video</button>
+            <input
+              type="text" 
+              name="title" 
+              onChange={handleChange} 
+              placeholder="Title" 
+              value={video.title}
+            />
+            <input 
+              type="text" 
+              name="views" 
+              onChange={handleChange} 
+              placeholder="Views"
+              value={video.views}
+             />
+        
+        <button onClick={handleSubmit}>Add Video</button>
         </form>
     )
 
