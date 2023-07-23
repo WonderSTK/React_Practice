@@ -11,10 +11,18 @@ function App() {
       {...video, id: videos.length+1}
      ]);
   }
+
+  function deleteVideo(id){
+    setVideos(videos.filter(video=>video.id!==id));
+  }
+
+  function editVideo(id){
+    
+  }
   return (
     <div className="App">
       <AddVideo addVideos={addVideos}></AddVideo>
-      <VideoList videos={videos}></VideoList>
+      <VideoList deleteVideo={deleteVideo} editVideo={editVideo} videos={videos}></VideoList>
       
     </div>
   );
