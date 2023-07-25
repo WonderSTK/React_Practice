@@ -1,8 +1,9 @@
 import "./App.css";
 import AddVideo from "./components/AddVideo";
 import VideoList from "./components/VideoList";
+import ThemeContext from "./context/ThemeContext";
 import videoDB from "./data/data";
-import { useReducer, useState } from "react";
+import { useContext, useReducer, useState } from "react";
 function App() {
   const [editableVideo, setEditableVideo] = useState(null);
   function videoReducer(videos, action){
@@ -28,34 +29,20 @@ function App() {
   }
  
   const [videos, dispatch] = useReducer(videoReducer, videoDB);
-  
 
-  
-  
-  
-  function addVideos(video){
-    dispatch({type: 'ADD' ,payload:video})
-    
-  }
+  const themeContext = useContext(ThemeContext);
 
-  function deleteVideo(id){
-    dispatch({type: 'DELETE' ,payload:id})
-    
-  }
 
   function editVideo(id){
     setEditableVideo(videos.find(video=>video.id===id));
   }
   
-  function updateVideo(video){
-    dispatch({type: 'UPDATE' ,payload:video})
-    
-  }
+
 
   return (
-    <div className="App">
-      <AddVideo addVideos={addVideos} updateVideo={updateVideo} editableVideo={editableVideo}></AddVideo>
-      <VideoList deleteVideo={deleteVideo} editVideo={editVideo} videos={videos}></VideoList>
+    <div className={ 'App ${themeContext}' }>
+      <AddVideo dispatch={dispatch}  editableVideo={editableVideo}></AddVideo>
+      <VideoList dispatch={dispatch} editVideo={editVideo} videos={videos}></VideoList>
       
     </div>
   );

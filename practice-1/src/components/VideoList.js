@@ -1,7 +1,7 @@
 import PlayButton from "./PlayButton";
 import Video from "./Video";
 
-function VideoList({videos,deleteVideo,editVideo}) {
+function VideoList({videos,dispatch,editVideo}) {
 
     return(
         <>
@@ -14,8 +14,8 @@ function VideoList({videos,deleteVideo,editVideo}) {
           channel={video.channel}
           verified={video.verified}
           id={video.id}
-          deleteVideo ={deleteVideo}
           editVideo={editVideo}
+          dispatch={dispatch}
         >
           <PlayButton
             message="play-msg"

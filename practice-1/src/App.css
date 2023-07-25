@@ -4,3 +4,11 @@
     height:100vh;
   }
 
+.lightMode{
+  background-color: #888;
+}
+
+   
+.darktMode{
+  background-color: #333;
+}
