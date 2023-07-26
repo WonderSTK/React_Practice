@@ -1,8 +1,9 @@
 import PlayButton from "./PlayButton";
 import Video from "./Video";
+import useVideos from "../hooks/Videos";
 
-function VideoList({videos,dispatch,editVideo}) {
-
+function VideoList({editVideo}) {
+  const videos = useVideos();
     return(
         <>
         {videos.map((video) => (
@@ -15,7 +16,6 @@ function VideoList({videos,dispatch,editVideo}) {
           verified={video.verified}
           id={video.id}
           editVideo={editVideo}
-          dispatch={dispatch}
         >
           <PlayButton
             message="play-msg"
