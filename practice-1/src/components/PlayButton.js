@@ -11,7 +11,7 @@ function PlayButton({message, children, onPlay, onPause}) {
         setPlaying(!playing);
     }
     return(
-        <button clasName={theme} onClick={handleClick} >{children} : {playing? '▶️': '⏸️'}</button>
+        <button className={theme} onClick={handleClick} >{children} : {playing? '▶️': '⏸️'}</button>
 
     )
 }
